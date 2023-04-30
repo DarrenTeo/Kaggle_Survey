@@ -8,7 +8,7 @@ st.header('Kaggle Survey Analysis')
 
 @st.cache.data
 def load_data():
-    df = pd.read_csv(r'kaggle_survey_2017_2021.csv', sep=',',skiprows=1, low_memory=False)
+    df = pd.read_csv('https://raw.githubusercontent.com/DarrenTeo/Kaggle_Survey/main/kaggle_survey_2017_2021.csv', sep=',',skiprows=1, low_memory=False)
     df['survey_id'] = df.index
     
     ################
