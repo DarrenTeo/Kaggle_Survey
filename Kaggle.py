@@ -6,7 +6,7 @@ st.set_page_config(layout="wide")
 
 st.header('Kaggle Survey Analysis')
 
-@st.cache_data
+
 def load_data():
     df = pd.read_csv(r'kaggle_survey_2017_2021.csv', sep=',',skiprows=1)
     df['survey_id'] = df.index
