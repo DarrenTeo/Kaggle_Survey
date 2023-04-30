@@ -62,7 +62,7 @@ year_list = df['Year'].dropna().sort_values(ascending=True).unique()
 
 with st.sidebar:
     with st.expander('Year'):
-        all_year = st.checkbox("Select All Years",key='year_checkbox')
+        all_year = st.checkbox("Select All Years",key='year_checkbox',value=True)
         year_container = st.container()
 
         if all_year:
@@ -75,7 +75,7 @@ job_list = df['Job_Title'].dropna().sort_values(ascending=True).unique()
 
 with st.sidebar:
     with st.expander('Job'):
-        all_job = st.checkbox("Select All Jobs",key='job_checkbox')
+        all_job = st.checkbox("Select All Jobs",key='job_checkbox',value=True)
         job_container = st.container()
 
         if all_job:
@@ -131,7 +131,7 @@ with col1:
     # Step: Sort column(s) survey_id_size descending (Z-A)
     df2 = df2.sort_values(by=['survey_id_size'], ascending=[False])
 
-    fig = px.bar(df2, y='survey_id_size', x='Job_Title',title='Job Title', height=600)
+    fig = px.bar(df2, y='survey_id_size', x='Job_Title',title='Job Title', height=600, width=600)
     fig
 
 ###############
@@ -139,7 +139,7 @@ with col1:
 ###############
 
 with col2:
-    fig = px.histogram(st.session_state['df'].dropna(subset=['What is your age (# years)?']), x='What is your age (# years)?',title='Age Distribution of Survey Participants', height=600
+    fig = px.histogram(st.session_state['df'].dropna(subset=['What is your age (# years)?']), x='What is your age (# years)?',title='Age Distribution of Survey Participants', height=600, width=600
                        # ,facet_col='Year',category_orders={"Year": [2017, 2018, 2019, 2020,2021]}
                       )
     fig.update_xaxes(categoryorder='category ascending')
@@ -152,7 +152,7 @@ with col2:
 with col1:
     df3 = st.session_state['df'].groupby(['Job_Title', 'Education']).agg(Count=('survey_id', 'size')).reset_index()
     df3 = df3.sort_values(by=['Count'], ascending=[False])
-    fig = px.treemap(df3, path=['Job_Title', 'Education'], values='Count', height=600,title='Highest Qualification')
+    fig = px.treemap(df3, path=['Job_Title', 'Education'], values='Count', height=600, width=600,title='Highest Qualification')
     fig
 
 
@@ -163,7 +163,7 @@ with col2:
     df4 = st.session_state['df'].groupby(['Job_Title', 'Coding_Years']).agg(Count=('survey_id', 'size')).reset_index()
     df4 = df4.sort_values(by=['Count'], ascending=[False])
 
-    fig = px.treemap(df4, path=['Job_Title', 'Coding_Years'], values='Count', height=600,title='Coding Experience')
+    fig = px.treemap(df4, path=['Job_Title', 'Coding_Years'], values='Count', height=600,title='Coding Experience', width=600)
     fig
 
 
@@ -175,7 +175,7 @@ with col1:
     df5['Year'] = df5['Year'].astype('string')
     fig = px.bar(df5, x='What programming language would you recommend an aspiring data scientist to learn first? - Selected Choice', y='Count',
                  color='Year', barmode='group',
-                 height=600,title='Recommended Programming Language')
+                 height=600,title='Recommended Programming Language', width=600)
     fig.update_xaxes(categoryorder='total descending')
     fig
 
@@ -187,7 +187,7 @@ with col2:
     df6['Year'] = df6['Year'].astype('string')
     fig = px.bar(df6, x='Which of the following business intelligence tools do you use most often? - Selected Choice', y='Count',
                  color='Year', barmode='group',
-                 height=600,title='Recommended BI tool')
+                 height=600,title='Recommended BI tool', width=600)
     fig.update_xaxes(categoryorder='total descending')
     fig
 
