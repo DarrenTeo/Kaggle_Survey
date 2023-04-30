@@ -8,7 +8,17 @@ st.header('Kaggle Survey Analysis')
 
 @st.cache.data
 def load_data():
-    df = pd.read_csv('https://raw.githubusercontent.com/DarrenTeo/Kaggle_Survey/main/kaggle_survey_2017_2021.csv', sep=',',skiprows=1, low_memory=False)
+    df = pd.read_csv('https://raw.githubusercontent.com/DarrenTeo/Kaggle_Survey/main/kaggle_survey_2017_2021.csv', sep=',',skiprows=1, usecols = ['What is the highest level of formal education that you have attained or plan to attain within the next 2 years?',
+                                                                                    'For how many years have you been writing code and/or programming?',
+                                                                                    'Select the title most similar to your current role (or most recent title if retired): - Selected Choice',
+                                                                                    'What programming languages do you use on a regular basis? (Select all that apply) - Selected Choice - Python',
+                                                                                    'What programming languages do you use on a regular basis? (Select all that apply) - Selected Choice - R',
+                                                                                    'What programming languages do you use on a regular basis? (Select all that apply) - Selected Choice - SQL',
+                                                                                    'What is your age (# years)?',
+                                                                                    'What programming language would you recommend an aspiring data scientist to learn first? - Selected Choice',
+                                                                                    'Which of the following business intelligence tools do you use most often? - Selected Choice',
+                                                                                    'Year'
+                                                                                   ])
     df['survey_id'] = df.index
     
     ################
