@@ -6,7 +6,7 @@ st.set_page_config(layout="wide")
 
 st.header('Kaggle Survey Analysis')
 
-@st.cache.data
+@st.cache()
 def load_data():
     df = pd.read_csv('https://raw.githubusercontent.com/DarrenTeo/Kaggle_Survey/main/kaggle_survey_2017_2021.csv', sep=',',skiprows=1, usecols = ['What is the highest level of formal education that you have attained or plan to attain within the next 2 years?',
                                                                                     'For how many years have you been writing code and/or programming?',
